@@ -13,8 +13,10 @@ out of scope here.
 
 ## Principles
 
-- **Xymon's default does not change.** Without a setting from this project, the
-  pages Xymon generates are byte for byte what they are today.
+- **The facelift does not change Xymon's default.** Without a setting from
+  this project, the pages Xymon generates are byte for byte what Xymon alone
+  would make them. Xymon itself stays free to change its pages; the facelift
+  follows.
 - **Everything is opt-in.** An administrator installs the facelift, switches each
   part on per installation, and can switch it off again.
 - **Xymon itself gets only small changes, off by default**, each as its own pull
@@ -65,11 +67,15 @@ is safe as the default.
 
 ### Xymon itself (tests in the Xymon repository)
 
-**1. The default output does not change.**
-With the default configuration, the pages Xymon generates are byte for byte
-the same as before the change. First every page that goes through the code a
-pull request changes: the pages that write status icons, and the headers with
-the META refresh. The rest (snapshot, reports, WML, RSS) is added step by step.
+**1. The facelift's changes leave Xymon's default output unchanged.**
+With the default configuration, a pull request the facelift sends to Xymon
+leaves the pages Xymon generates byte for byte as they were. Xymon itself may
+change its pages: such a change regenerates the reference in its own pull
+request, where it shows in the diff, and the facelift's tests against Xymon's
+main catch a layout it breaks. First every page that goes through the code a
+facelift pull request changes: the pages that write status icons, and the
+headers with the META refresh. The rest (snapshot, reports, WML, RSS) is added
+step by step.
 Test: render the pages from the shared status board in
 `tests/lib/xymongen-board.sh` (xymon-monitoring/xymon#605), mask date, time
 and version, and compare them with reference pages stored in the Xymon tree.
