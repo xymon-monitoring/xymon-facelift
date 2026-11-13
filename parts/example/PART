@@ -1,0 +1,8 @@
+# What this part is, and what ./install.sh installs from it. One key per
+# line; a key repeated for each line of a message.
+name: example
+version: 0.1.0
+kind: layout
+summary: a placeholder, only so that install.sh has a part to install; the first real layout replaces it
+files: example.css
+installed: Nothing to switch on: this part only tries install.sh, and changes no page.
