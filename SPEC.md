@@ -110,9 +110,15 @@ Xymon installed changed. Not written yet.
 Installing the facelift changes nothing visible until a part is switched on. It
 never overwrites a file Xymon ships; a setting in `xymonserver.cfg` is changed
 only as rule 12 says. Switching a part off brings back the default pages
-unchanged.
+unchanged. So does removing the facelift's directory, `ext/facelift`, by hand:
+a part keeps everything it needs there, its settings included, which Xymon
+reads through a link in `etc/xymonserver.d` and skips once the link points
+nowhere; Xymon's own `XYMONSKIN` and `XYMONBODYFOOTER` then apply again.
+Xymon reads `xymonserver.d` from 4.3.31 on; with an older one the settings go
+into `xymonserver.cfg` by hand, and come out of it the same way.
 Test: install, render, switch on and off again, render, and compare with the
-pages before installing. Not written yet.
+pages before installing; then switch on again, remove `ext/facelift`, render,
+and compare again. Not written yet.
 
 **7. Works on a plain Xymon 4.3.x.**
 Skins and layouts work without the new Xymon settings of rule 4. A layout finds
